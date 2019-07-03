@@ -2,6 +2,9 @@ package org.optaplanner.examples.cloudbalancing.domain;
 
 import java.util.List;
 
+import org.optaplanner.core.api.domain.solution.PlanningSolution;
+
+@PlanningSolution
 public class CloudBalance {
     
     private List<CloudComputer> computerList;
