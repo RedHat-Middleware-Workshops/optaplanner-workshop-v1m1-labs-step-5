@@ -1,6 +1,9 @@
 package org.optaplanner.examples.cloudbalancing.domain;
 
-public class CloudComputer {
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+@XStreamAlias("CloudComputer")
+public class CloudComputer extends AbstractPersistable {
     
     private int cpuPower;
     
@@ -13,7 +16,8 @@ public class CloudComputer {
     public CloudComputer() {
     }
     
-    public CloudComputer(int cpuPower, int memory, int networkBandwidth, int cost) {
+    public CloudComputer(Long id, int cpuPower, int memory, int networkBandwidth, int cost) {
+		super(id);
         this.cpuPower = cpuPower;
         this.memory = memory;
         this.networkBandwidth = networkBandwidth;

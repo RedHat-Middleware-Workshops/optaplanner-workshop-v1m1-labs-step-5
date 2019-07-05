@@ -1,10 +1,13 @@
 package org.optaplanner.examples.cloudbalancing.domain;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import org.optaplanner.core.api.domain.entity.PlanningEntity;
 import org.optaplanner.core.api.domain.variable.PlanningVariable;
 
 @PlanningEntity
-public class CloudProcess {
+@XStreamAlias("CloudProcess")
+public class CloudProcess extends AbstractPersistable {
     
     private int requiredCpuPower;
     
@@ -17,7 +20,8 @@ public class CloudProcess {
     public CloudProcess() {
     }
     
-    public CloudProcess(int requiredCpuPower, int requiredMemory, int requiredNetworkBandwidth) {
+    public CloudProcess(Long id, int requiredCpuPower, int requiredMemory, int requiredNetworkBandwidth) {
+		super(id);
         this.requiredCpuPower = requiredCpuPower;
         this.requiredMemory = requiredMemory;
         this.requiredNetworkBandwidth = requiredNetworkBandwidth;

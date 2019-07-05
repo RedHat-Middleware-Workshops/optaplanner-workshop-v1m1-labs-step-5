@@ -2,10 +2,13 @@ package org.optaplanner.examples.cloudbalancing.domain;
 
 import java.util.List;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import org.optaplanner.core.api.domain.solution.PlanningSolution;
 
 @PlanningSolution
-public class CloudBalance {
+@XStreamAlias("CloudBalance")
+public class CloudBalance extends AbstractPersistable {
     
     private List<CloudComputer> computerList;
     
@@ -14,7 +17,8 @@ public class CloudBalance {
     public CloudBalance() {
     }
 
-    public CloudBalance(List<CloudComputer> computerList, List<CloudProcess> processList) {
+    public CloudBalance(Long id, List<CloudComputer> computerList, List<CloudProcess> processList) {
+		super(id);
         this.computerList = computerList;
         this.processList = processList;
     }
