@@ -19,7 +19,7 @@ public class CloudBalanceRepositoryTest {
     public void testLoadCloudBalance() {
         CloudBalanceRepository repository = new CloudBalanceRepository();
         File inputFile = new File("data/cloudbalancing/unsolved/4computers-12processes.xml");
-        CloudBalance cloudBalance = repository.loadCloudBalance(inputFile);
+        CloudBalance cloudBalance = repository.load(inputFile);
 
         assertThat(4, is(cloudBalance.getComputerList().size()));
         assertThat(12, is(cloudBalance.getProcessList().size()));
