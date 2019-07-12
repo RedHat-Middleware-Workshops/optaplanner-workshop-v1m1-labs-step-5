@@ -72,7 +72,7 @@ public class CloudProcess extends AbstractPersistable {
 	/**
 	 * @return the computer
 	 */
-	@PlanningVariable
+	@PlanningVariable(valueRangeProviderRefs = {"computerRange"})
 	public CloudComputer getComputer() {
 		return computer;
 	}
@@ -83,7 +83,5 @@ public class CloudProcess extends AbstractPersistable {
 	public void setComputer(CloudComputer computer) {
 		this.computer = computer;
 	}
-
-
 	
 }

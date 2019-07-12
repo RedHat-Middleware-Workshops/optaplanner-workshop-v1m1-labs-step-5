@@ -4,7 +4,11 @@ import java.util.List;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
+import org.optaplanner.core.api.domain.solution.PlanningEntityCollectionProperty;
+import org.optaplanner.core.api.domain.solution.PlanningScore;
 import org.optaplanner.core.api.domain.solution.PlanningSolution;
+import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
+import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
 @PlanningSolution
 @XStreamAlias("CloudBalance")
@@ -12,7 +16,9 @@ public class CloudBalance extends AbstractPersistable {
     
     private List<CloudComputer> computerList;
     
-    private List<CloudProcess> processList;
+	private List<CloudProcess> processList;
+	
+	private HardSoftScore scoreHolder;
     
     public CloudBalance() {
     }
@@ -26,6 +32,7 @@ public class CloudBalance extends AbstractPersistable {
 	/**
 	 * @return the computerList
 	 */
+	@ValueRangeProvider(id = "computerRange")
 	public List<CloudComputer> getComputerList() {
 		return computerList;
 	}
@@ -40,6 +47,7 @@ public class CloudBalance extends AbstractPersistable {
 	/**
 	 * @return the processList
 	 */
+	@PlanningEntityCollectionProperty
 	public List<CloudProcess> getProcessList() {
 		return processList;
 	}
@@ -50,6 +58,20 @@ public class CloudBalance extends AbstractPersistable {
 	public void setProcessList(List<CloudProcess> processList) {
 		this.processList = processList;
 	}
-    
+
+	/**
+	 * @return the scoreHolder
+	 */
+	@PlanningScore
+	public HardSoftScore getScoreHolder() {
+		return scoreHolder;
+	}
+
+	/**
+	 * @param scoreHolder the scoreHolder to set
+	 */
+	public void setScoreHolder(HardSoftScore scoreHolder) {
+		this.scoreHolder = scoreHolder;
+	}
     
 }
